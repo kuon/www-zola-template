@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% if page and page.title %}
+  {% set title = config.title ~ " | " ~ page.title %}
+  {% elif section and section.title %}
+  {% set title = config.title ~ " | " ~ section.title %}
+  {% else %}
+  {% set title = config.title %}
+  {% endif %}
+
+  <head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Description">
+    <meta name="keywords" content="a, b">
+    <meta name="author" content="Author">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <link rel="sitemap" href="/sitemap.xml" type="application/xml">
+    <link rel="stylesheet"
+          href="/css/bundle.css">
+    <link rel="shortcut icon"
+          href="{{ get_url(path="/images/icon.png") }}">
+    <meta property="og:type"
+          content="article" />
+    <meta property="og:title"
+          content="{{ title }}" />
+    <meta property="og:site_name"
+          content="{{ config.title }}" />
+    <meta property="og:url"
+          content="{{ current_url }}" />
+    <meta property="og:image"
+          content="{{ get_url(path="/images/icon.png") }}" />
+    <script src="/js/bundle.js" defer async></script>
+    {% if config.generate_feed %}
+    <link rel="alternate" type={% if config.feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=config.feed_filename) | safe }}">
+    {% endif %}
+  </head>
+
+  <body class="flex flex-col min-h-screen">
+    {% include "header.html" %}
+    {% block content %} {% endblock %}
+
+    {% include "footer.html" %}
+  </body>
+
+</html>
+

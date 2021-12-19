@@ -1,0 +1,15 @@
+_site
+.sass-cache
+.jekyll-metadata
+node_modules
+.envrc
+public
+bundle.js
+bundle.css
+static/processed_images/
+build
+
+# Local Netlify folder
+.netlify
+*.log
+
