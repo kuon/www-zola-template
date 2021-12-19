@@ -28,7 +28,7 @@ server:
 .PHONY: watch
 
 watch: export NODE_ENV=development
-watch: node_modules
+watch:
 	zola serve
 
 .PHONY: assets-server
@@ -49,7 +49,7 @@ deploy: build
 
 .PHONY: build
 
-build: assets zola-build 
+build: assets zola-build
 
 .PHONY: zola-build
 
